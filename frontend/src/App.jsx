@@ -10,8 +10,9 @@ function App() {
   return (
     <BrowserRouter>
       <Navbar />
-      <FileUpload />
+      {/* <FileUpload /> */}
       <Routes>
+        <Route path="/" element={<FileUpload />}></Route>
         <Route path="/registration" element={<Registration />}></Route>
         <Route path="/signin" element={<Signin />}></Route>
       </Routes>

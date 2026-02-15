@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const { register, login,handleUpload } = require("../controllers/auth.controller");
+const { register, login, getProfile } = require("../controllers/auth.controller");
+const User = require("../models/userschema.js");
+const authMiddleware = require("../middleware/auth");
 
 const multer = require("multer");
 const storage = multer.diskStorage({
@@ -20,5 +22,6 @@ router.post("/upload",upload.single("resume"),(req,res)=>{
     console.log(req.file);
 });
 
+router.get('/login', authMiddleware, getProfile);
 
 module.exports = router;
